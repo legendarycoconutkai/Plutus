@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plutus/home.dart';
+import 'package:plutus/Frontend/home.dart';
 
 // Frame widget which is a StatefulWidget
 class Frame extends StatefulWidget {
@@ -15,9 +15,9 @@ class _FrameState extends State<Frame> {
 
   // List of pages to navigate to
   final pages = [
-    Home(),
-    Home(),
-    Home(),
+    const Home(),
+    const Home(),
+    const Home(),
   ];
 
   @override

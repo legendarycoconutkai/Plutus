@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plutus/colour.dart';
+import 'package:plutus/Backend/colour.dart';
 
 // Frame widget which is a StatefulWidget
 class Home extends StatefulWidget {
@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                       )
                     ),
                     const SizedBox(width: 9.0,),
-                    const Icon(Icons.bug_report_rounded, size: 30,),
+                    Image.asset('assets/robot.png', height: 27, width: 27,),
                   ],
                 ),                
               ),
@@ -138,27 +138,32 @@ class _HomeState extends State<Home> {
                   borderRadius: BorderRadius.circular(15),
                   border: Border.all(color: Colors.black, width: 2.18),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 6.0,),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 15.0, bottom: 6.0,),
-                    child: Row(
-                      children: [
-                        SizedBox(width: 210.0,),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 15.0, bottom: 6.0, left: 6.0, right: 6.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(width: 210.0,),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Icon(Icons.bug_report_rounded, size: 30,),
-                            SizedBox(height: 4.5,),
-                            Divider(color: Colors.black, thickness: 2,),
-                            SizedBox(height: 4.5,),
-                            Text(
-                              'You didn’t pay on time\nin June. An additional\ninterest of 5% is charged.', 
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
+                            Image.asset('assets/robot.png', height: 27, width: 27,),
+                            const SizedBox(height: 4.5,),
+                            const Divider(color: Colors.black, thickness: 2, height: 6, indent: 115,),
+                            const SizedBox(height: 4.5,),
+                            const Flexible(
+                              child: Text(
+                              'You didn’t pay on time in June. An additional interest of 5% is charged.', 
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                              overflow: TextOverflow.visible,
+                              textAlign: TextAlign.end,
+                              ),
+                            ),
                           ],
                         ),
-                      ],
-                    )
+                      ),
+                    ],
                   )
                 )
               ),

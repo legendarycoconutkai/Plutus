@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plutus/navbar.dart';
+import 'package:plutus/Frontend/navbar.dart';
 
 void main() {
   runApp(const MyApp());
