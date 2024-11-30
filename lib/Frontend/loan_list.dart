@@ -12,6 +12,18 @@ class _LoanListState extends State<LoanList> {
 
   @override
   Widget build(BuildContext context) {
+
+    final OverlayPortalController moreController = OverlayPortalController();
+
+    List<Map<String, String>> loanDetails = [
+      {
+        'amount': 'RM 0.00',
+        'rate': '0%',
+        'instalment': '0',
+        'charge': '0%',
+      },
+    ];
+
     return Scaffold(
       backgroundColor: white,
       body: SafeArea(
@@ -110,20 +122,33 @@ class _LoanListState extends State<LoanList> {
                               const SizedBox(height: 10),
                               Align(
                                 alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 81, height: 21,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0x2DF2828D),
-                                  ),
-                                  child: const Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.info, size: 9, color: Colors.black,),
-                                        SizedBox(width: 3),
-                                        Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    loanDetails = [
+                                      {
+                                        'amount': 'RM 2,000.00',
+                                        'rate': '0.83%',
+                                        'instalment': '24',
+                                        'charge': '1%',
+                                      },
+                                    ];
+                                    moreController.toggle();                                  
+                                  },
+                                  child: Container(
+                                    width: 81, height: 21,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: const Color(0x2DF2828D),
+                                    ),
+                                    child: const Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info, size: 9, color: Colors.black,),
+                                          SizedBox(width: 3),
+                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -195,20 +220,33 @@ class _LoanListState extends State<LoanList> {
                               const SizedBox(height: 10),
                               Align(
                                 alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 81, height: 21,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0x2DF2828D),
-                                  ),
-                                  child: const Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.info, size: 9, color: Colors.black,),
-                                        SizedBox(width: 3),
-                                        Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    loanDetails = [
+                                      {
+                                        'amount': 'RM 1,000.00',
+                                        'rate': '0.83%',
+                                        'instalment': '24',
+                                        'charge': '1%',
+                                      },
+                                    ];
+                                    moreController.toggle();                                  
+                                  },
+                                  child: Container(
+                                    width: 81, height: 21,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: const Color(0x2DF2828D),
+                                    ),
+                                    child: const Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info, size: 9, color: Colors.black,),
+                                          SizedBox(width: 3),
+                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -280,20 +318,33 @@ class _LoanListState extends State<LoanList> {
                               const SizedBox(height: 10),
                               Align(
                                 alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 81, height: 21,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0x2DF2828D),
-                                  ),
-                                  child: const Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.info, size: 9, color: Colors.black,),
-                                        SizedBox(width: 3),
-                                        Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    loanDetails = [
+                                      {
+                                        'amount': 'RM 1,000.00',
+                                        'rate': '0.9%',
+                                        'instalment': '12',
+                                        'charge': '1%',
+                                      },
+                                    ];
+                                    moreController.toggle();                                  
+                                  },
+                                  child: Container(
+                                    width: 81, height: 21,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: const Color(0x2DF2828D),
+                                    ),
+                                    child: const Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info, size: 9, color: Colors.black,),
+                                          SizedBox(width: 3),
+                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -365,20 +416,33 @@ class _LoanListState extends State<LoanList> {
                               const SizedBox(height: 10),
                               Align(
                                 alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 81, height: 21,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0x2DF2828D),
-                                  ),
-                                  child: const Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.info, size: 9, color: Colors.black,),
-                                        SizedBox(width: 3),
-                                        Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    loanDetails = [
+                                      {
+                                        'amount': 'RM 1,000.00',
+                                        'rate': '0.92%',
+                                        'instalment': '24',
+                                        'charge': '1%',
+                                      },
+                                    ];
+                                    moreController.toggle();                                  
+                                  },
+                                  child: Container(
+                                    width: 81, height: 21,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: const Color(0x2DF2828D),
+                                    ),
+                                    child: const Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info, size: 9, color: Colors.black,),
+                                          SizedBox(width: 3),
+                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -450,20 +514,33 @@ class _LoanListState extends State<LoanList> {
                               const SizedBox(height: 10),
                               Align(
                                 alignment: Alignment.centerRight,
-                                child: Container(
-                                  width: 81, height: 21,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color(0x2DF2828D),
-                                  ),
-                                  child: const Center(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.info, size: 9, color: Colors.black,),
-                                        SizedBox(width: 3),
-                                        Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                      ],
+                                child: GestureDetector(
+                                  onTap: () {
+                                    loanDetails = [
+                                      {
+                                        'amount': 'RM 2,000.00',
+                                        'rate': '0.83%',
+                                        'instalment': '12',
+                                        'charge': '1%',
+                                      },
+                                    ];
+                                    moreController.toggle();                                  
+                                  },
+                                  child: Container(
+                                    width: 81, height: 21,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: const Color(0x2DF2828D),
+                                    ),
+                                    child: const Center(
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(Icons.info, size: 9, color: Colors.black,),
+                                          SizedBox(width: 3),
+                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -477,6 +554,103 @@ class _LoanListState extends State<LoanList> {
                 )
               ),
             ),
+            OverlayPortal(
+              controller: moreController, 
+              overlayChildBuilder: (BuildContext context) {
+                return Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    GestureDetector(
+                      onTap: moreController.toggle,
+                      child: Container(
+                        height: MediaQuery.sizeOf(context).height, width: MediaQuery.sizeOf(context).width,
+                        color: Colors.black.withOpacity(0.25),
+                      ),
+                    ),
+                    Container(
+                      height: 270, width: MediaQuery.sizeOf(context).width,
+                      decoration: BoxDecoration(
+                        color: white,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(32.75),
+                          topRight: Radius.circular(32.75),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Container(
+                                width: 40, height: 3,
+                                decoration: const BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20.0, top: 9.0,),
+                            child: Text("Estimated payment breakdown", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold), textAlign: TextAlign.left,),
+                          ),
+                          const SizedBox(height: 12.0),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text('Loan amount', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                Text(loanDetails[0]['amount']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12.0),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text('Monthly interest rate', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                Text(loanDetails[0]['rate']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12.0),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text('No. of instalments', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                Text(loanDetails[0]['instalment']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 12.0),
+                          const Divider(
+                            color: Colors.grey,
+                            thickness: 1.0,
+                          ),
+                          const SizedBox(height: 12.0),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text('Late payment charges on outstanding amount', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                Text(loanDetails[0]['charge']!, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            )
           ],
         ),
       ),

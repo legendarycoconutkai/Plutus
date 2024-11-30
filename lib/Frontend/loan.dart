@@ -14,7 +14,7 @@ class _LoanState extends State<Loan> {
   @override
   Widget build(BuildContext context) {
 
-    final OverlayPortalController _confirmController = OverlayPortalController();
+    final OverlayPortalController confirmController = OverlayPortalController();
 
     return Scaffold(
       backgroundColor: white,
@@ -115,7 +115,7 @@ class _LoanState extends State<Loan> {
                                       const Text('APPLY FOR LOANS', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                                       const SizedBox(width: 12,),
                                       GestureDetector(
-                                        onTap: _confirmController.toggle,
+                                        onTap: confirmController.toggle,
                                         child: Container(
                                           decoration: BoxDecoration(
                                             color: white,
@@ -242,13 +242,13 @@ class _LoanState extends State<Loan> {
                 ),
               ),
               OverlayPortal(
-                controller: _confirmController, 
+                controller: confirmController, 
                 overlayChildBuilder: (BuildContext context) {
                   return Stack(
                     alignment: Alignment.bottomCenter,
                     children: [
                       GestureDetector(
-                        onTap: _confirmController.toggle,
+                        onTap: confirmController.toggle,
                         child: Container(
                           height: MediaQuery.sizeOf(context).height, width: MediaQuery.sizeOf(context).width,
                           color: Colors.black.withOpacity(0.25),
@@ -372,7 +372,7 @@ class _LoanState extends State<Loan> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: _confirmController.toggle,
+                        onTap: confirmController.toggle,
                         child: Container(
                           height: 90, width: MediaQuery.sizeOf(context).width,
                           decoration: BoxDecoration(

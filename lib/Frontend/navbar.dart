@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:plutus/Frontend/apply.dart';
+import 'package:plutus/Frontend/active_loan.dart';
 import 'package:plutus/Frontend/dashboard.dart';
 import 'package:plutus/Frontend/home.dart';
 import 'package:plutus/Frontend/loan.dart';
 import 'package:plutus/Frontend/loan_list.dart';
+import 'package:plutus/Frontend/profile.dart';
 import 'package:plutus/Frontend/socialmedia.dart';
 
 // Frame widget which is a StatefulWidget
@@ -22,8 +23,8 @@ class _FrameState extends State<Frame> {
   final pages = [
     const Home(),
     const Loan(),
-    const Socialmedia(),
-    const Dashboard()
+    const LoanList(),
+    const Profile()
   ];
 
   @override
