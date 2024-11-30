@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plutus/Backend/colour.dart';
+import 'package:plutus/Frontend/check_profile.dart';
 
 class Apply extends StatefulWidget {
   const Apply({super.key});
@@ -20,8 +21,31 @@ class _ApplyState extends State<Apply> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0,),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: 49.41, height: 46.98,
+                        decoration: BoxDecoration(
+                          color: white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black, width: 2.18),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(3.0),
+                          child: Icon(Icons.close_rounded, size: 39, color: Colors.black,),
+                        )
+                      ),
+                    ),
+                ),
+              ),
               const Padding(
-                padding: EdgeInsets.only(top: 30.0,),
+                padding: EdgeInsets.only(top: 18.0,),
                 child: Text('Personal Loan Application', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
               ),
               const Text(
@@ -117,19 +141,33 @@ class _ApplyState extends State<Apply> {
                         ],
                       ),
                       const SizedBox(height: 18,),
-                      Container(
-                        width: 120, height: 45,
-                        decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.black, width: 2.18),
+                      GestureDetector(
+                        onTap: () {
+                            if (_isChecked) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const CheckProfile()),
+                            );
+                            } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Please agree to the terms and conditions')),
+                            );
+                            }
+                        },
+                        child: Container(
+                          width: 120, height: 45,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.black, width: 2.18),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Search Now', 
+                              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold), 
+                              textAlign: TextAlign.start,),
+                          )
                         ),
-                        child: const Center(
-                          child: Text(
-                            'Search Now', 
-                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold), 
-                            textAlign: TextAlign.start,),
-                        )
                       ),
                     ],
                   ),

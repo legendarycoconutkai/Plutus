@@ -14,6 +14,7 @@ class _LoanListState extends State<LoanList> {
   Widget build(BuildContext context) {
 
     final OverlayPortalController moreController = OverlayPortalController();
+    final OverlayPortalController confirmController = OverlayPortalController();
 
     List<Map<String, String>> loanDetails = [
       {
@@ -36,17 +37,22 @@ class _LoanListState extends State<LoanList> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text('LOAN OFFERS LIST', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
-                  Container(
-                    width: 49.41, height: 46.98,
-                    decoration: BoxDecoration(
-                      color: white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black, width: 2.18),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 49.41, height: 46.98,
+                      decoration: BoxDecoration(
+                        color: white,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black, width: 2.18),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(3.0),
+                        child: Icon(Icons.close_rounded, size: 39, color: Colors.black,),
+                      )
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(3.0),
-                      child: Icon(Icons.close_rounded, size: 39, color: Colors.black,),
-                    )
                   ),
                 ],
               ),
@@ -59,101 +65,104 @@ class _LoanListState extends State<LoanList> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 18, left: 20, right: 20),
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.black, width: 2.18),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 9.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 81, height: 21,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: const Color(0xFFB5FFC2),
+                      GestureDetector(
+                        onTap: confirmController.toggle,
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 18, left: 20, right: 20),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.black, width: 2.18),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 9.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 81, height: 21,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: const Color(0xFFB5FFC2),
+                                  ),
+                                  child: const Center(
+                                    child: Text('RECOMMENDED', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                  ),
                                 ),
-                                child: const Center(
-                                  child: Text('RECOMMENDED', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                const SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Image.asset('assets/maybank.png', width: 165),
+                                    const Text('RM 2,000.00', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                                  ],
                                 ),
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Image.asset('assets/maybank.png', width: 165),
-                                  const Text('RM 2,000.00', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              const Row(
-                                mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('2 years', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                      Text('Loan duration', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
-                                    ],
-                                  ),
-                                  SizedBox(width: 18),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('RM 100.00', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                      Text('Monthly repayment', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
-                                    ],
-                                  ),
-                                  SizedBox(width: 18),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text('10%*', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                      Text('Annual interest rate', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 10),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    loanDetails = [
-                                      {
-                                        'amount': 'RM 2,000.00',
-                                        'rate': '0.83%',
-                                        'instalment': '24',
-                                        'charge': '1%',
-                                      },
-                                    ];
-                                    moreController.toggle();                                  
-                                  },
-                                  child: Container(
-                                    width: 81, height: 21,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: const Color(0x2DF2828D),
+                                const SizedBox(height: 10),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('2 years', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                        Text('Loan duration', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                      ],
                                     ),
-                                    child: const Center(
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Icon(Icons.info, size: 9, color: Colors.black,),
-                                          SizedBox(width: 3),
-                                          Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
-                                        ],
+                                    SizedBox(width: 18),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('RM 100.00', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                        Text('Monthly repayment', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                      ],
+                                    ),
+                                    SizedBox(width: 18),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('10%*', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                        Text('Annual interest rate', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w200),),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      loanDetails = [
+                                        {
+                                          'amount': 'RM 2,000.00',
+                                          'rate': '0.83%',
+                                          'instalment': '24',
+                                          'charge': '1%',
+                                        },
+                                      ];
+                                      moreController.toggle();                                  
+                                    },
+                                    child: Container(
+                                      width: 81, height: 21,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: const Color(0x2DF2828D),
+                                      ),
+                                      child: const Center(
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.info, size: 9, color: Colors.black,),
+                                            SizedBox(width: 3),
+                                            Text('More info', style: TextStyle(fontSize: 9, fontWeight: FontWeight.bold),),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -645,6 +654,44 @@ class _LoanListState extends State<LoanList> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            OverlayPortal(
+              controller: confirmController, 
+              overlayChildBuilder: (BuildContext context) {
+                return Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      height: 90, width: MediaQuery.sizeOf(context).width,
+                      decoration: BoxDecoration(
+                        color: cyan,
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(32.75),
+                          topRight: Radius.circular(32.75),
+                        ),
+                      ),
+                      child: Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).popUntil((route) => route.isFirst);
+                          },
+                          style: ElevatedButton.styleFrom(
+                          backgroundColor: darkpurple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          minimumSize: const Size(240, 45), // Change the size of the button
+                          ),
+                          child: const Text(
+                          'Confirm',
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                          ),
+                        ),
                       ),
                     ),
                   ],

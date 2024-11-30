@@ -8,110 +8,78 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final _formKey = GlobalKey<FormState>();
-  String? maritalStatus;
-  TextEditingController addressController = TextEditingController();
-  TextEditingController companyNameController = TextEditingController();
-  TextEditingController officeAddressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Check your details"),
+        title: const Text("Profile"),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              Text(
-                "Please ensure your details are correct before submitting your loan application.",
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 20),
-              buildTextField("Name", "JESS HO JIA QIAN", readOnly: true),
-              buildTextField("IC number", "021111-**-****", readOnly: true),
-              buildTextField("Mobile no.", "***-****3135", readOnly: true),
-              DropdownButtonFormField<String>(
-                decoration: InputDecoration(labelText: "Marital status"),
-                value: maritalStatus,
-                items: [
-                  DropdownMenuItem(value: "Single", child: Text("Single")),
-                  DropdownMenuItem(value: "Married", child: Text("Married")),
-                  DropdownMenuItem(value: "Divorced", child: Text("Divorced")),
-                ],
-                onChanged: (value) => setState(() {
-                  maritalStatus = value;
-                }),
-                validator: (value) =>
-                    value == null ? "This is a required field." : null,
-              ),
-              buildTextField("Address", "Typing...", controller: addressController),
-              buildTextField("Nationality", "Malaysian", readOnly: true),
-              buildTextField("Occupation", "Managers", readOnly: true),
-              buildTextField(
-                  "Company name", "", controller: companyNameController),
-              buildTextField(
-                "Employment status",
-                "Permanent",
-                readOnly: true,
-              ),
-              buildTextField(
-                  "Office address", "", controller: officeAddressController),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () {
-                        // Go back action
-                      },
-                      child: Text("Back"),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState?.validate() == true) {
-                          // Submit action
-                        }
-                      },
-                      child: Text("Submit"),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        child: ListView(
+          children: [
+            buildSectionTitle("Account Info"),
+            buildDetailTile("Name", "JESS HO JIA QIAN"),
+            buildDetailTile("IC Number", "021111-**-****"),
+            buildDetailTile("Mobile No.", "***-****3135"),
+            const SizedBox(height: 20),
+            buildSectionTitle("Personal Details"),
+            buildDetailTile("Marital Status", "Single"),
+            buildDetailTile("Address", "Kolej Canselor, Universiti Putra Malaysia"),
+            buildDetailTile("Nationality", "Malaysian"),
+            const SizedBox(height: 20),
+            buildSectionTitle("Employment Details"),
+            buildDetailTile("Occupation", "Managers"),
+            buildDetailTile("Company Name", "Company XYZ"),
+            buildDetailTile("Employment Status", "Permanent"),
+            buildDetailTile("Office Address", "Office XYZ Address"),
+          ],
         ),
       ),
     );
   }
 
-  Widget buildTextField(String label, String placeholder,
-      {bool readOnly = false, TextEditingController? controller}) {
-    return TextFormField(
-      controller: controller,
-      readOnly: readOnly,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: placeholder,
-        border: OutlineInputBorder(),
-        errorText:
-            (controller != null && controller.text.isEmpty) ? "This is a required field." : null,
+  Widget buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black54,
+        ),
       ),
-      validator: (value) {
-        if (!readOnly && (value == null || value.isEmpty)) {
-          return "This is a required field.";
-        }
-        return null;
-      },
+    );
+  }
+
+  Widget buildDetailTile(String label, String value) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: Colors.black,
+          ),
+        ),
+        Divider(color: Colors.grey.shade300, thickness: 1),
+      ],
     );
   }
 }

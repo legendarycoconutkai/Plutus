@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:plutus/Backend/colour.dart';
+import 'package:plutus/Frontend/apply.dart';
+import 'package:plutus/Frontend/dashboard.dart';
+import 'package:plutus/Frontend/loan_list.dart';
 
 class Loan extends StatefulWidget {
   const Loan({super.key});
@@ -55,19 +57,27 @@ class _LoanState extends State<Loan> {
                                       Image.asset('assets/bank.png', height: 33, width: 33),
                                       const Text('LIST OF LOANS', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                                       const SizedBox(width: 12,),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: white,
-                                          borderRadius: BorderRadius.circular(8),
-                                          border: Border.all(color: Colors.black, width: 2.18),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const LoanList()),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: white,
+                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(color: Colors.black, width: 2.18),
+                                          ),
+                                          child: const Padding(
+                                            padding: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right: 12.0,),
+                                            child: Text(
+                                              'CHECK NOW', 
+                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold), 
+                                              textAlign: TextAlign.start,),
+                                          )
                                         ),
-                                        child: const Padding(
-                                          padding: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right: 12.0,),
-                                          child: Text(
-                                            'CHECK NOW', 
-                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold), 
-                                            textAlign: TextAlign.start,),
-                                        )
                                       ),
                                     ],
                                   ),
@@ -210,19 +220,27 @@ class _LoanState extends State<Loan> {
                                       Image.asset('assets/withdraw.png', height: 33, width: 33),
                                       const Text('REPAY YOUR DEBTS', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                                       const SizedBox(width: 12,),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: white,
-                                          borderRadius: BorderRadius.circular(8),
-                                          border: Border.all(color: Colors.black, width: 2.18),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const Dashboard()),
+                                          );
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: white,
+                                            borderRadius: BorderRadius.circular(8),
+                                            border: Border.all(color: Colors.black, width: 2.18),
+                                          ),
+                                          child: const Padding(
+                                            padding: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right: 12.0,),
+                                            child: Text(
+                                              'REPAY NOW', 
+                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold), 
+                                              textAlign: TextAlign.start,),
+                                          )
                                         ),
-                                        child: const Padding(
-                                          padding: EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right: 12.0,),
-                                          child: Text(
-                                            'REPAY NOW', 
-                                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold), 
-                                            textAlign: TextAlign.start,),
-                                        )
                                       ),
                                     ],
                                   ),
@@ -286,21 +304,30 @@ class _LoanState extends State<Loan> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly, crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(7.22),
-                                    border: Border.all(color: Colors.black, width: 3.15),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right : 12.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset('assets/user.png', height: 24, width: 24),
-                                        const SizedBox(width: 6,),
-                                        const Text('Personal', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
-                                      ],
+                                GestureDetector(
+                                  onTap: () {
+                                    confirmController.toggle();
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const Apply()),
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: white,
+                                      borderRadius: BorderRadius.circular(7.22),
+                                      border: Border.all(color: Colors.black, width: 3.15),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0, right : 12.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset('assets/user.png', height: 24, width: 24),
+                                          const SizedBox(width: 6,),
+                                          const Text('Personal', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
