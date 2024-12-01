@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plutus/Backend/colour.dart';
+import 'package:plutus/Backend/userdata.dart';
 import 'package:plutus/Frontend/check_profile.dart';
 
 class Apply extends StatefulWidget {
@@ -11,6 +12,20 @@ class Apply extends StatefulWidget {
 
 class _ApplyState extends State<Apply> {
   bool _isChecked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeUserData();
+  }
+
+  Future<void> _initializeUserData() async {
+    await UserData.saveUserData(
+      amount: 'RM 2000',
+      duration: '2 years',
+      income: 'RM 5000',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -142,17 +157,42 @@ class _ApplyState extends State<Apply> {
                       ),
                       const SizedBox(height: 18,),
                       GestureDetector(
-                        onTap: () {
-                            if (_isChecked) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const CheckProfile()),
+                        onTap: () async{
+                          if (_isChecked) {
+                          final loanAmountController = TextEditingController();
+                          final loanDurationController = TextEditingController();
+                          final monthlyIncomeController = TextEditingController();
+
+                          if (loanAmountController.text.isNotEmpty) {
+                            await UserData.saveUserData(
+                            amount: loanAmountController.text,
+                            duration: '2 years', // default value
+                            income: 'RM 5000', // default value
                             );
-                            } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please agree to the terms and conditions')),
+                          }
+                          if (loanDurationController.text.isNotEmpty) {
+                            await UserData.saveUserData(
+                            amount: 'RM 2000', // default value
+                            duration: loanDurationController.text,
+                            income: 'RM 5000', // default value
                             );
-                            }
+                          }
+                          if (monthlyIncomeController.text.isNotEmpty) {
+                            await UserData.saveUserData(
+                            amount: 'RM 2000', // default value
+                            duration: '2 years', // default value
+                            income: monthlyIncomeController.text,
+                            );
+                          }
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const CheckProfile()),
+                          );
+                          } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Please agree to the terms and conditions')),
+                          );
+                          }
                         },
                         child: Container(
                           width: 120, height: 45,
@@ -165,8 +205,9 @@ class _ApplyState extends State<Apply> {
                             child: Text(
                               'Search Now', 
                               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold), 
-                              textAlign: TextAlign.start,),
-                          )
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
                         ),
                       ),
                     ],

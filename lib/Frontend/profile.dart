@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plutus/Backend/userdata.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -8,6 +9,27 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeUserData();
+  }
+
+  Future<void> _initializeUserData() async {
+    await UserData.saveUserData(
+      name: 'JESS HO JIA QIAN',
+      icNumber: "021111-**-****",
+      phone: '***-****3135',
+      marital: "Single",
+      address: 'Kolej Canselor, Universiti Putra Malaysia',
+      nationality: "Malaysian",
+      occupation: "Managers",
+      cname: "Company XYZ",
+      estatus: "Permanent",
+      oaddress: "Company XYZ Address",
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

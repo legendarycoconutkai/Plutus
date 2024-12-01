@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plutus/Backend/colour.dart';
+import 'package:plutus/Frontend/active_loan.dart';
 import 'package:plutus/Frontend/apply.dart';
-import 'package:plutus/Frontend/dashboard.dart';
+import 'package:plutus/Frontend/bank_pov.dart';
 import 'package:plutus/Frontend/loan_list.dart';
 
 class Loan extends StatefulWidget {
@@ -32,7 +33,7 @@ class _LoanState extends State<Loan> {
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 60.0),
@@ -224,7 +225,7 @@ class _LoanState extends State<Loan> {
                                         onTap: () {
                                           Navigator.push(
                                             context,
-                                            MaterialPageRoute(builder: (context) => const Dashboard()),
+                                            MaterialPageRoute(builder: (context) => const ActiveLoan()),
                                           );
                                         },
                                         child: Container(
@@ -256,6 +257,25 @@ class _LoanState extends State<Loan> {
                         ],
                       ),
                     ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const BankPov()),
+                        );
+                      },
+                      child: Container(
+                        height: 50, width: MediaQuery.sizeOf(context).width*0.6,
+                        decoration: BoxDecoration(
+                          color: white,
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(color: Colors.black, width: 2.18),
+                        ),
+                        child: const Center(
+                          child: Text('BANK POINT OF VIEW', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

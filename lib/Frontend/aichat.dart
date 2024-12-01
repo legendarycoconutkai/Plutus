@@ -26,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Row(
                   children: [
                     Icon(Icons.circle, size: 10, color: Colors.green),
-                    const SizedBox(width: 6),
+                    SizedBox(width: 6),
                     Text('Always active', style: TextStyle(fontSize: 12)),
                   ],
                 ),
@@ -54,7 +54,7 @@ class _ChatWidgetState extends State<ChatWidget> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFieldFocus = FocusNode();
   bool _loading = false;
-  static final String _apiKey = dotenv.env['GOOGLE_API_KEY']!;
+  static final String _apiKey = dotenv.env['GOOGLE_API_KEY_1']!;
 
   @override
   void initState() {
@@ -250,7 +250,7 @@ class MessageWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: isFromUser
                   ? Theme.of(context).colorScheme.primaryContainer
-                  : Theme.of(context).colorScheme.surfaceVariant,
+                  : Theme.of(context).colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(18),
             ),
             padding: const EdgeInsets.symmetric(
